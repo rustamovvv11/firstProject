@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <form action="/save_food" method="POST">
+            @csrf
+            <div class="form-group">
+                <label for="email">Name:</label>
+                <input type="name" class="form-control" id="name" placeholder="Enter name" name="name">
+            </div>
+              <div class="form-group">
+                <label for="email">ccal:</label>
+                <input type="number" class="form-control" id="price" placeholder="Enter price" name="ccal">
+            </div>
+            <div class="form-group">
+                <label for="email">type:</label>
+                <input type="type:" class="form-control" id="type:" placeholder="Enter type:" name="type">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+   <table class="table table-stripped">
+   <thead>
+       <tr>
+           <th>Id</th>
+           <th>Name</th>
+           <th>Ccal</th>
+           <th>Type</th>
+       </tr>
+   </thead>
+   <tbody>
+   @foreach ($foods as $item)
+   <tr>
+       <td>{{ $item->id }}</td>
+       <td>{{ $item->name }}</td>
+       <td>{{ $item->type}}</td>
+       <td>{{ $item->ccal }}</td>
+       <td><a href="/save_food/{{ $item->id }}" class="=btn btn-outline-danger">Delete</a> </td>
+   </tr>
+   @endforeach
+   </tbody>
+
+   </table>
+
+</body>
+
+</html>
